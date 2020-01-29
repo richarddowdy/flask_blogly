@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 
 {% block title %}
-  <title>{{users.first_name}}</title>
+  Users
 {% endblock %}
 
 
@@ -14,4 +14,7 @@
     {% endfor %}
   </ul>
 
+  <form action="/users/new">
+  <button type="submit">Add user</button>
+  </form>
 {% endblock %}
