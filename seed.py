@@ -1,6 +1,6 @@
 """ Seed file to make the data for users DB. """
 
-from models import Users, db        
+from models import Users, Posts, db        
 from app import app
 
 """Create all Tables"""
@@ -15,9 +15,20 @@ adam = Users(first_name='Adam', last_name='Levitz', image_url='https://cdn-04.in
 
 richard = Users(first_name='Richard', last_name='Dowdy')
 
+adam_post = Posts(title="Adam Test 1", 
+                    content="Test post 1 for Adam User.", 
+                    user_id=1)
+
+richard_post = Posts(title="Richard Test 1",
+                        content="Test post 1 for Richard user.",
+                        user_id=2)
+
 #add new instances to the session
 db.session.add(adam)
 db.session.add(richard)
+db.session.add(adam_post)
+db.session.add(richard_post)
+
 
 #commit sessions
 db.session.commit()

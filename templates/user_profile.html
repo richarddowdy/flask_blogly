@@ -18,5 +18,12 @@
   <input type="submit" name="" id="" value="Delete" class="btn btn-danger">
 </form>
 
+<h2>Posts</h2>
+<ul>
+  {% for post in posts %}
+    <li><a href="/post/{{post.id}}">{{post.title}}</a></li>
+  {% endfor %}
+</ul>
+
 
 {% endblock %}
