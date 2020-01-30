@@ -26,6 +26,6 @@ class Users(db.Model):
                             unique=True)
 
     image_url= db.Column(db.String(),
-                            nullable=True,
-                            unique=True)
-                            # default=href='default_clown.jpg')
+                            nullable=False,
+                            unique=False,
+                            default='https://media.alienwarearena.com/media/1327-m.jpg')

@@ -29,7 +29,9 @@ def add_new_user_to_db():
 
     new_first_name = request.form['new_first_name']
     new_last_name = request.form['new_last_name']
-    new_user_image = request.form['new_user_image']
+    new_user_image = request.form.get('new_user_image')
+    if new_user_image == '':
+        new_user_image = 'https://media.alienwarearena.com/media/1327-m.jpg'
 
     user = Users(first_name=new_first_name, last_name=new_last_name, image_url=new_user_image)
 
