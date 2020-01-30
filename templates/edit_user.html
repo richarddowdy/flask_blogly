@@ -11,16 +11,16 @@
 <form action="/user/{{user.id}}/edit" method="POST">
   
   <label for="edited_first_name">First Name</label>
-  <input type="text" name="edited_first_name" value="{{user.first_name}}"><br>
+  <input type="text" name="edited_first_name" value="{{user.first_name}}" class="form-control"><br>
 
   <label for="edited_last_name">Last Name</label>
-  <input type="text" name="edited_last_name" value="{{user.last_name}}"><br>
+  <input type="text" name="edited_last_name" value="{{user.last_name}}" class="form-control"><br>
 
   <label for="edited_user_image">Image URL</label>
-  <input type="text" name="edited_user_image" value="{{user.image_url}}"><br>
+  <input type="text" name="edited_user_image" value="{{user.image_url}}" class="form-control"><br>
 
-  <a href="/user/{{user.id}}" class="BOOTSTRAP BUTTON">Cancel</a>
-  <input type="submit" id="edit_user" value="Save"></input>
+  <a href="/user/{{user.id}}" class="btn btn-outline-danger">Cancel</a>
+  <input type="submit" id="edit_user" value="Save" class="btn btn-outline-success"></input>
 
 </form>
 
