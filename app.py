@@ -54,4 +54,9 @@ def user_profile(user_id):
 
 
 
-# @app.route('/users/<Int:user.id>/edit')
+@app.route('/user/<int:user_id>/edit')
+def edit_user_profile(user_id):
+
+    user = Users.query.get(user_id)
+
+    return render_template("edit_user.html", user=user)

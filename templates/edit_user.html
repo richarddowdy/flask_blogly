@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+
+{% block title %}
+  Edit Profile: {{user.first_name}}
+{% endblock %}
+
+{% block content %}
+
+<h1>Edit a user</h1>
+
+<form action="/user/{{user.id}}" method="POST">
+  
+  <label for="edited_first_name">First Name</label>
+  <input type="text" name="edited_first_name" value="{{user.first_name}}"><br>
+
+  <label for="edited_last_name">Last Name</label>
+  <input type="text" name="edited_last_name" value="{{user.last_name}}"><br>
+
+  <label for="edited_user_image">Image URL</label>
+  <input type="text" name="edited_user_image" value="{{user.image_url}}"><br>
+
+  <a href="/user/{{user.id}}" class="BOOTSTRAP BUTTON">Cancel</a>
+  <input type="submit" id="edit_user" value="Save"></input>
+
+</form>
+
+
+{% endblock %}
