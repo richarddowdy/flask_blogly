@@ -19,11 +19,11 @@ class Users(db.Model):
     
     first_name = db.Column(db.String(20),
                             nullable=False,
-                            unique=True)
+                            unique=False)
     
     last_name = db.Column(db.String(20),
                             nullable=False,
-                            unique=True)
+                            unique=False)
 
     image_url= db.Column(db.String(),
                             nullable=False,

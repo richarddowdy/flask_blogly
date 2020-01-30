@@ -60,3 +60,29 @@ def edit_user_profile(user_id):
     user = Users.query.get(user_id)
 
     return render_template("edit_user.html", user=user)
+
+@app.route('/user/<int:user_id>/edit', methods=['POST'])
+def save_edited_profile(user_id):
+
+    user = Users.query.get(user_id)
+
+    user.first_name = request.form['edited_first_name']
+    user.last_name = request.form['edited_last_name']
+    user.image_url = request.form.get('edited_user_image')
+
+    db.session.add(user)
+    db.session.commit()
+
+    print(user.first_name, user.last_name, user.image_url)
+
+    return redirect(f'/user/{user.id}')
+
+
+@app.route('/user/<int:user_id>/delete', methods=['POST'])
+def delete_user(user_id):
+    print('*****', user_id)
+    user = Users.query.get(user_id)
+
+    db.session.delete(user)
+    db.session.commit()
+    return redirect('/')
