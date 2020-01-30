@@ -42,3 +42,14 @@ def add_new_user_to_db():
     return redirect('/')
 
 
+@app.route('/user/<int:user_id>')
+def user_profile(user_id):
+    
+    user = Users.query.get(user_id)
+
+    return render_template('user_profile.html', user=user)
+
+
+
+
+# @app.route('/users/<Int:user.id>/edit')
