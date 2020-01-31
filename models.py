@@ -26,7 +26,7 @@ class Users(db.Model):
                             nullable=False,
                             unique=False)
 
-    image_url= db.Column(db.String(),
+    image_url = db.Column(db.String(),
                             nullable=False,
                             unique=False,
                             default='https://media.alienwarearena.com/media/1327-m.jpg')

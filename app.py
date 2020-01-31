@@ -49,9 +49,8 @@ def user_profile(user_id):
     
     user = Users.query.get(user_id)
 
-    posts = Posts.query.filter_by(id=user.id)
 
-    return render_template('user_profile.html', user=user, posts=posts)
+    return render_template('user_profile.html', user=user)
 
 
 
@@ -128,6 +127,29 @@ def delete_post(post_id):
     user = Users.query.get(post.user_id)
 
     db.session.delete(post)
+    db.session.commit()
+
+    return redirect(f'/user/{user.id}')
+
+@app.route('/user/<int:user_id>/posts/new')
+def make_new_post_form(user_id):
+
+    user = Users.query.get(user_id)
+
+    return render_template('new_post_form.html', user=user)
+
+
+@app.route('/user/<int:user_id>/post/new', methods=['POST'])
+def submit_new_post(user_id):
+
+    user = Users.query.get(user_id)
+
+    title = request.form['new-title']
+    content = request.form['new-content']
+
+    post = Posts(title=title, content=content, user_id=user.id)
+
+    db.session.add(post)
     db.session.commit()
 
     return redirect(f'/user/{user.id}')
