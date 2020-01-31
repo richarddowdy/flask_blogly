@@ -99,9 +99,35 @@ def show_user_post(post_id):
     return render_template('post.html', user=user, post=post)
 
 @app.route('/post/<int:post_id>/edit')
-def edit_post(post_id):
+def edit_post_form(post_id):
     
     post = Posts.query.get(post_id)
     user = Users.query.get(post.user_id)
 
     return render_template('edit_posts.html', post=post, user=user)
+
+@app.route('/post/<int:post_id>/edit', methods=['POST'])
+def edit_post_submit(post_id):
+
+    post = Posts.query.get(post_id)
+    
+    post.title = request.form['new_post_title']
+    post.content = request.form['new_post_content']
+
+    db.session.add(post)
+    db.session.commit()
+
+    print('new content', post.title, post.content)
+    return redirect(f'/post/{post.id}')
+
+
+@app.route('/post/<int:post_id>/delete', methods=['POST'])
+def delete_post(post_id):
+
+    post = Posts.query.get(post_id)
+    user = Users.query.get(post.user_id)
+
+    db.session.delete(post)
+    db.session.commit()
+
+    return redirect(f'/user/{user.id}')
